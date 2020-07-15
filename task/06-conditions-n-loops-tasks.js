@@ -62,13 +62,13 @@ function getFactorial(n) {
         return -1;
     }
 
-    let result = 1;
+    let factorial = 1;
 
     while (n > 0) {
-        result = result * n--;
+        factorial *= n--;
     }
 
-    return result;
+    return factorial;
 }
 
 
@@ -85,13 +85,13 @@ function getFactorial(n) {
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
 function getSumBetweenNumbers(n1, n2) {
-    let result = 0;
+    let sum = 0;
 
     for (let i = n1; i <= n2; i++) {
-        result += i;
+        sum += i;
     }
 
-    return result;
+    return sum;
 }
 
 
@@ -110,11 +110,7 @@ function getSumBetweenNumbers(n1, n2) {
  *   10,10,10 =>  true
  */
 function isTriangle(a, b, c) {
-    if (a + b > c && a + c > b && b + c > a) {
-        return true;
-    }
-
-    return false;
+    return a + b > c && a + c > b && b + c > a;
 }
 
 
@@ -151,11 +147,7 @@ function isTriangle(a, b, c) {
  *  
  */
 function doRectanglesOverlap(rect1, rect2) {
-    if ((rect1.left < rect2.left + rect2.width) && (rect1.top < rect2.top + rect2.height) && (rect2.left < rect1.left + rect1.width) && (rect2.top < rect1.top + rect1.height)) {
-        return true;
-    }
-
-    return false;
+    return (rect1.left < rect2.left + rect2.width) && (rect1.top < rect2.top + rect2.height) && (rect2.left < rect1.left + rect1.width) && (rect2.top < rect1.top + rect1.height);
 }
 
 
@@ -186,11 +178,7 @@ function doRectanglesOverlap(rect1, rect2) {
  *   
  */
 function isInsideCircle(circle, point) {
-    if ((Math.pow((point.x - circle.center.x), 2) + Math.pow((point.y - circle.center.y), 2)) < Math.pow(circle.radius, 2)) {
-        return true;
-    }
-
-    return false;
+    return (Math.pow((point.x - circle.center.x), 2) + Math.pow((point.y - circle.center.y), 2)) < Math.pow(circle.radius, 2);
 }
 
 
@@ -347,7 +335,7 @@ function getDigitalRoot(num) {
     let sum = num;
 
     while (sum > 9) {
-        sum = String(sum).split('').reduce((sum, val) => sum + Number(val), 0);
+        sum = String(sum).split('').reduce((sum, digit) => sum + Number(digit), 0);
     }
 
     return sum;
@@ -526,18 +514,19 @@ function toNaryString(num, n) {
  */
 function getCommonDirectoryPath(pathes) {
     const arr = pathes[0].split('/');
-    let common = '';
+    let commonPath = '';
 
     for (let i = 0; i < arr.length; i++) {
         for (let j = 0; j < pathes.length; j++) {
             if (pathes[j].split('/')[i] != arr[i]) {
-                return common;
+                return commonPath;
             }
         }
-        common += arr[i] + '/';
+
+        commonPath += arr[i] + '/';
     }
 
-    return common;
+    return commonPath;
 }
 
 
