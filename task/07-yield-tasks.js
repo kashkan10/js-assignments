@@ -34,6 +34,7 @@
  */
 function* get99BottlesOfBeer() {
     let n = 99;
+
     while (n > 2) {
         yield `${n} bottles of beer on the wall, ${n--} bottles of beer.`;
         yield `Take one down and pass it around, ${n} bottles of beer on the wall.`;
@@ -102,12 +103,11 @@ function* getFibonacciSequence() {
  *
  */
 function* depthTraversalTree(root) {
-    let stack = []
-    yield root;
-    stack.push(...root.children.reverse());
+    let stack = [root];
+    let currRoot;
 
     while (stack.length != 0) {
-        let currRoot = stack.pop();
+        currRoot = stack.pop();
         yield currRoot;
 
         if (currRoot.children) {
@@ -139,15 +139,15 @@ function* depthTraversalTree(root) {
  *
  */
 function* breadthTraversalTree(root) {
-    let stack = [];
-    yield root;
+    let stack = [root];
+    let tempStack;
+    let currRoot;
 
-    stack.push(...root.children.reverse());
     while (stack.length != 0) {
-        let tempStack = [];
+        tempStack = [];
 
         while (stack.length != 0) {
-            let currRoot = stack.pop();
+            currRoot = stack.pop();
             yield currRoot;
 
             if (currRoot.children) {
@@ -209,19 +209,18 @@ function* mergeSortedSequences(source1, source2) {
  */
 function async(generator) {
     const iterator = generator();
-    let result = iterator.next();
 
-    function Resolve(res) {
-        if (res.done) {
-            return res.value;
+    function Resolve(obj) {
+        if (obj.done) {
+            return obj.value;
         }
 
-        return Promise.resolve(res.value).then((response) => {
+        return obj.value.then(response => {
             return Resolve(iterator.next(response));
         });
     }
 
-    return Resolve(result);
+    return Resolve(iterator.next());
 }
 
 module.exports = {
