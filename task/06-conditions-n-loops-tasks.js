@@ -30,15 +30,15 @@
  *
  */
 function getFizzBuzz(num) {
-    if (num % 3 == 0) {
-        if (num % 5 == 0) {
+    if (num % 3 === 0) {
+        if (num % 5 === 0) {
             return 'FizzBuzz';
         }
 
         return 'Fizz';
     }
 
-    if (num % 5 == 0) {
+    if (num % 5 === 0) {
         return 'Buzz';
     }
 
@@ -196,13 +196,13 @@ function isInsideCircle(circle, point) {
 function findFirstSingleChar(str) {
     for (let i = 0; i < str.length; i++) {
         for (let j = 0; j < str.length; j++) {
-            if (i == j) {
+            if (i === j) {
                 continue;
             }
-            if (str[i] == str[j]) {
+            if (str[i] === str[j]) {
                 break;
             }
-            if (j == str.length - 1) {
+            if (j === str.length - 1) {
                 return str[i];
             }
         }
@@ -313,7 +313,7 @@ function isCreditCardNumber(ccn) {
         sum += cardNum;
     }
 
-    return sum % 10 == 0;
+    return sum % 10 === 0;
 }
 
 
@@ -364,7 +364,7 @@ function getDigitalRoot(num) {
  *   '{[(<{[]}>)]}' = true 
  */
 function isBracketsBalanced(str) {
-    if (str.length % 2 != 0) {
+    if (str.length % 2 !== 0) {
         return false;
     }
 
@@ -373,20 +373,20 @@ function isBracketsBalanced(str) {
 
     while (arr.length > 0) {
         let element = arr.shift();
-        if (element == '[' || element == '(' || element == '{' || element == '<') {
+        if (element === '[' || element === '(' || element === '{' || element === '<') {
             stack.push(element);
         }
         else {
-            if (element == ']' && (stack.length == 0 || stack.pop() != '[')) {
+            if (element === ']' && (stack.length === 0 || stack.pop() !== '[')) {
                 return false;
             }
-            if (element == ')' && (stack.length == 0 || stack.pop() != '(')) {
+            if (element === ')' && (stack.length === 0 || stack.pop() !== '(')) {
                 return false;
             }
-            if (element == '}' && (stack.length == 0 || stack.pop() != '{')) {
+            if (element === '}' && (stack.length === 0 || stack.pop() !== '{')) {
                 return false;
             }
-            if (element == '>' && (stack.length == 0 || stack.pop() != '<')) {
+            if (element === '>' && (stack.length === 0 || stack.pop() !== '<')) {
                 return false;
             }
         }
@@ -518,7 +518,7 @@ function getCommonDirectoryPath(pathes) {
 
     for (let i = 0; i < arr.length; i++) {
         for (let j = 0; j < pathes.length; j++) {
-            if (pathes[j].split('/')[i] != arr[i]) {
+            if (pathes[j].split('/')[i] !== arr[i]) {
                 return commonPath;
             }
         }
@@ -601,18 +601,18 @@ function getMatrixProduct(m1, m2) {
  *
  */
 function evaluateTicTacToePosition(position) {
-    if (position[0][0] == position[1][1] && position[0][0] == position[2][2] && position[0][0] != undefined) {
+    if (position[0][0] === position[1][1] && position[0][0] === position[2][2] && position[0][0] !== undefined) {
         return position[0][0];
     }
-    if (position[0][2] == position[1][1] && position[0][2] == position[2][0] && position[0][2] != undefined) {
+    if (position[0][2] === position[1][1] && position[0][2] === position[2][0] && position[0][2] !== undefined) {
         return position[0][2];
     }
 
     for (let i = 0; i < 3; i++) {
-        if (position[i][0] == position[i][1] && position[i][0] == position[i][2] && position[i][0] != undefined) {
+        if (position[i][0] === position[i][1] && position[i][0] === position[i][2] && position[i][0] !== undefined) {
             return position[i][0];
         }
-        if (position[0][i] == position[1][i] && position[0][i] == position[2][i] && position[0][i] != undefined) {
+        if (position[0][i] === position[1][i] && position[0][i] === position[2][i] && position[0][i] !== undefined) {
             return position[0][i];
         }
     }
