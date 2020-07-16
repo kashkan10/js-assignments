@@ -106,7 +106,7 @@ function* depthTraversalTree(root) {
     let stack = [root];
     let currRoot;
 
-    while (stack.length != 0) {
+    while (stack.length !== 0) {
         currRoot = stack.pop();
         yield currRoot;
 
@@ -143,10 +143,10 @@ function* breadthTraversalTree(root) {
     let tempStack;
     let currRoot;
 
-    while (stack.length != 0) {
+    while (stack.length !== 0) {
         tempStack = [];
 
-        while (stack.length != 0) {
+        while (stack.length !== 0) {
             currRoot = stack.pop();
             yield currRoot;
 
