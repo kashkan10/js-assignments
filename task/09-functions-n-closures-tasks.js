@@ -119,7 +119,7 @@ function retry(func, attempts) {
                 return func();
             }
             catch (error) {
-                if (i == attempts) {
+                if (i === attempts) {
                     throw error;
                 }
             }
