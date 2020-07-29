@@ -64,8 +64,8 @@ function getFactorial(n) {
 
     let factorial = 1;
 
-    while (n > 0) {
-        factorial *= n--;
+    for (let i = n; i > 0; i--) {
+        factorial *= i;
     }
 
     return factorial;
@@ -273,7 +273,7 @@ function reverseString(str) {
  *   34143 => 34143
  */
 function reverseInteger(num) {
-    return String(num).split('').reverse().join('');
+    return Number(String(num).split('').reverse().join(''));
 }
 
 
