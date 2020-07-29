@@ -180,7 +180,7 @@ function* mergeSortedSequences(source1, source2) {
     let firstResult = firstIterator.next();
     let secondResult = secondIterator.next();
 
-    while (true) {
+    while (!(firstResult.done && secondResult.done)) {
         if (secondResult.done || firstResult.value < secondResult.value) {
             yield firstResult.value;
             firstResult = firstIterator.next();
